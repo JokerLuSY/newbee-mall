@@ -40,19 +40,19 @@
 </div>
 
 <!--排序-->
-<div class="sort">
-    <div class="list">
-        <a th:href="@{'/search?keyword='+${keyword==null?'':keyword}+'&goodsCategoryId='+${goodsCategoryId==null?'':goodsCategoryId}+'&orderBy=default'}">
-            <div th:class="${orderBy==null || orderBy=='default'?'active':''}">推荐</div>
-        </a>
-        <a th:href="@{'/search?keyword='+${keyword==null?'':keyword}+'&goodsCategoryId='+${goodsCategoryId==null?'':goodsCategoryId}+'&orderBy=new'}">
-            <div th:class="${orderBy=='new'?'active':''}">新品</div>
-        </a>
-        <a th:href="@{'/search?keyword='+${keyword==null?'':keyword}+'&goodsCategoryId='+${goodsCategoryId==null?'':goodsCategoryId}+'&orderBy=price'}">
-            <div th:class="${orderBy=='price'?'active':''}">价格</div>
-        </a>
-    </div>
-</div>
+<!--<div class="sort">-->
+<!--    <div class="list">-->
+<!--        <a th:href="@{'/search?keyword='+${keyword==null?'':keyword}+'&goodsCategoryId='+${goodsCategoryId==null?'':goodsCategoryId}+'&orderBy=default'}">-->
+<!--            <div th:class="${orderBy==null || orderBy=='default'?'active':''}">推荐</div>-->
+<!--        </a>-->
+<!--        <a th:href="@{'/search?keyword='+${keyword==null?'':keyword}+'&goodsCategoryId='+${goodsCategoryId==null?'':goodsCategoryId}+'&orderBy=new'}">-->
+<!--            <div th:class="${orderBy=='new'?'active':''}">新品</div>-->
+<!--        </a>-->
+<!--        <a th:href="@{'/search?keyword='+${keyword==null?'':keyword}+'&goodsCategoryId='+${goodsCategoryId==null?'':goodsCategoryId}+'&orderBy=price'}">-->
+<!--            <div th:class="${orderBy=='price'?'active':''}">价格</div>-->
+<!--        </a>-->
+<!--    </div>-->
+<!--</div>-->
 
 <div class="goods_item center">
     <div class="main center">
