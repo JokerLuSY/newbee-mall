@@ -12,7 +12,5 @@ $(function () {
 
 function search() {
     var q = $('#keyword').val();
-    if (q && q != '') {
-        window.location.href = '/search?keyword=' + q;
-    }
+    window.location.href = '/search?keyword=' + q;
 }
