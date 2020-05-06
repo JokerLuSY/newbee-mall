@@ -30,7 +30,14 @@ public class ShoppingCartController {
         NewBeeMallUserVO user = (NewBeeMallUserVO) httpSession.getAttribute(Constants.MALL_USER_SESSION_KEY);
         int itemsTotal = 0;
         int priceTotal = 0;
-        List<NewBeeMallShoppingCartItemVO> myShoppingCartItems = newBeeMallShoppingCartService.getMyShoppingCartItems(user.getUserId());
+        List<NewBeeMallShoppingCartItemVO> myShoppingCartItems = null;
+        if (user == null)
+        {
+
+        }else{
+            myShoppingCartItems = newBeeMallShoppingCartService.getMyShoppingCartItems(user.getUserId());
+        }
+
         if (!CollectionUtils.isEmpty(myShoppingCartItems)) {
             //购物项总数
             itemsTotal = myShoppingCartItems.stream().mapToInt(NewBeeMallShoppingCartItemVO::getGoodsCount).sum();

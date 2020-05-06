@@ -50,7 +50,7 @@ public class NewBeeMallUserServiceImpl implements NewBeeMallUserService {
     @Override
     public String login(String loginName, String passwordMD5, HttpSession httpSession) {
         MallUser user = mallUserMapper.selectByLoginNameAndPasswd(loginName, passwordMD5);
-        if (user != null && httpSession != null) {
+        if (user != null) {
             if (user.getLockedFlag() == 1) {
                 return ServiceResultEnum.LOGIN_USER_LOCKED.getResult();
             }
@@ -62,7 +62,10 @@ public class NewBeeMallUserServiceImpl implements NewBeeMallUserService {
             NewBeeMallUserVO newBeeMallUserVO = new NewBeeMallUserVO();
             BeanUtil.copyProperties(user, newBeeMallUserVO);
             //设置购物车中的数量
-            httpSession.setAttribute(Constants.MALL_USER_SESSION_KEY, newBeeMallUserVO);
+            if (httpSession != null)
+            {
+                httpSession.setAttribute(Constants.MALL_USER_SESSION_KEY, newBeeMallUserVO);
+            }
             return ServiceResultEnum.SUCCESS.getResult();
         }
         return ServiceResultEnum.LOGIN_ERROR.getResult();
