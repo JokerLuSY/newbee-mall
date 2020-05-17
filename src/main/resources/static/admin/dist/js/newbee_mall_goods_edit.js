@@ -47,7 +47,7 @@ $('#confirmButton').click(function () {
     var sellingPrice = $('#sellingPrice').val();
     var stockNum = $('#stockNum').val();
     var goodsIntro = $('#goodsIntro').val();
-    var goodsCategoryId = $('#levelThree option:selected').val();
+    var goodsCategoryId = $('#levelOne option:selected').val();
     var goodsSellStatus = $("input[name='goodsSellStatus']:checked").val();
     var goodsDetailContent = editor.html();
     if (isNull(goodsCategoryId)) {
@@ -133,7 +133,7 @@ $('#confirmButton').click(function () {
 
 $('#saveButton').click(function () {
     var goodsId = $('#goodsId').val();
-    var goodsCategoryId = $('#levelThree option:selected').val();
+    var goodsCategoryId = $('#levelOne option:selected').val();
     var goodsName = $('#goodsName').val();
     var tag = $('#tag').val();
     var originalPrice = $('#originalPrice').val();

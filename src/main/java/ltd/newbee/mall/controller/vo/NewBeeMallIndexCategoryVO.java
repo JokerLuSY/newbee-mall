@@ -14,7 +14,7 @@ public class NewBeeMallIndexCategoryVO implements Serializable {
 
     private String categoryName;
 
-    private List<SecondLevelCategoryVO> secondLevelCategoryVOS;
+//    private List<SecondLevelCategoryVO> secondLevelCategoryVOS;
 
     public Long getCategoryId() {
         return categoryId;
@@ -40,11 +40,11 @@ public class NewBeeMallIndexCategoryVO implements Serializable {
         this.categoryName = categoryName;
     }
 
-    public List<SecondLevelCategoryVO> getSecondLevelCategoryVOS() {
-        return secondLevelCategoryVOS;
-    }
-
-    public void setSecondLevelCategoryVOS(List<SecondLevelCategoryVO> secondLevelCategoryVOS) {
-        this.secondLevelCategoryVOS = secondLevelCategoryVOS;
-    }
+//    public List<SecondLevelCategoryVO> getSecondLevelCategoryVOS() {
+//        return secondLevelCategoryVOS;
+//    }
+//
+//    public void setSecondLevelCategoryVOS(List<SecondLevelCategoryVO> secondLevelCategoryVOS) {
+//        this.secondLevelCategoryVOS = secondLevelCategoryVOS;
+//    }
 }

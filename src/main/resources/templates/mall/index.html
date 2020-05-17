@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="mall/header::head-fragment('NewBee商城-首页','index')">
+<head th:replace="mall/header::head-fragment('会员代理商城-首页','index')">
 </head>
 <body>
 <header th:replace="mall/header::header-fragment"></header>
@@ -9,24 +9,8 @@
     <div id="banner">
         <div class="all-sort-list">
             <th:block th:each="category : ${categories}">
-            <div class="item">
-                <h3><span>·</span><a href="##"><th:block th:text="${category.categoryName}"></th:block></a></h3>
-                <div class="item-list clearfix">
-                    <div class="subitem">
-                        <th:block th:each="secondLevelCategory : ${category.secondLevelCategoryVOS}">
-                        <dl class="fore1">
-                            <dt><a href="#"><th:block th:text="${secondLevelCategory.categoryName}"></th:block></a></dt>
-                            <dd>
-                                <th:block th:each="thirdLevelCategory : ${secondLevelCategory.thirdLevelCategoryVOS}">
-                                <em><a href="#"th:href="@{'/search?goodsCategoryId='+${thirdLevelCategory.categoryId}}">
-                                    <th:block th:text="${thirdLevelCategory.categoryName}"></th:block>
-                                </a></em>
-                                </th:block>
-                            </dd>
-                        </dl>
-                        </th:block>
-                    </div>
-                </div>
+            <div class="item" th:attr="name=${category.categoryName}">
+                <h3><a href="##"><th:block th:text="${category.categoryName}"></th:block></a></h3>
             </div>
             </th:block>
         </div>
@@ -60,8 +44,9 @@
             <div class="swiper-button-next"></div>
         </div>
     </div>
-
+    <div class="nav-title">热销商品</div>
     <div id="sub_banner">
+
         <!-- 已配置热销商品则显示配置内容 -->
         <th:block th:unless="${#lists.isEmpty(hotGoodses)}">
             <th:block th:each="hotGoodse : ${hotGoodses}">
@@ -73,86 +58,80 @@
             </th:block>
         </th:block>
         <!-- 未配置热销商品则显示默认 -->
-        <th:block th:if="${#lists.isEmpty(hotGoodses)}">
-            <div class="hot-image">
-                <a href="##">
-                    <img src="./mall/image/sub_banner/hot5.png" alt="">
-                </a>
-            </div>
-            <div class="hot-image">
-                <a href="##">
-                    <img src="./mall/image/sub_banner/hot6.jpg" alt="">
-                </a>
-            </div>
-            <div class="hot-image">
-                <a href="##">
-                    <img src="./mall/image/sub_banner/hot7.jpg" alt="">
-                </a>
-            </div>
-            <div class="hot-image">
-                <a href="##">
-                    <img src="./mall/image/sub_banner/hot8.jpg" alt="">
-                </a>
-            </div>
-            <div class="hot-image">
-                <a href="##">
-                    <img src="./mall/image/sub_banner/hot9.jpg" alt="">
-                </a>
-            </div>
-            <div class="hot-image">
-                <a href="##">
-                    <img src="./mall/image/sub_banner/hot10.jpg" alt="">
-                </a>
-            </div>
-        </th:block>
     </div>
-
     <div class="goods_item center">
         <div class="main center">
-            <th:block th:if="${#lists.isEmpty(pageResult.list)}">
-                未查询到商品
-            </th:block>
-            <th:block th:unless="${#lists.isEmpty(pageResult.list)}">
-                <th:block th:each="goods : ${pageResult.list}">
-                    <div class="item_card_frame">
-                        <div class="item_card"><a th:href="@{'/goods/detail/'+${goods.goodsId}}" target="_blank"><img
-                                th:src="@{${goods.goodsCoverImg}}" th:alt="${goods.goodsName}"></a></div>
-                        <div class="item_brand"><a th:href="@{'/goods/detail/'+${goods.goodsId}}" target="_blank"
-                                                   th:text="${goods.goodsName}">newbee.ltd</a></div>
-                        <div class="item_sub_intro" th:text="${goods.goodsIntro}">newbee.ltd</div>
-                        <div class="item_price" th:text="${goods.sellingPrice+'.00元'}">1299.00元</div>
-                    </div>
+            <th:block th:unless="${#lists.isEmpty(categories)}">
+                <th:block th:if="${#lists.isEmpty(pageResult.list)}">
+                    未查询到商品
+                </th:block>
+                <th:block th:unless="${#lists.isEmpty(pageResult.list)}">
+                    <th:block th:each ="category : ${categories}">
+                        <div class="nav-title"  th:attr="name=${category.categoryName}">
+                            <th:block th:text="${category.categoryName}"></th:block>
+                        </div>
+                        <div class="category-goods" style="display: inline-block;">
+                            <th:block th:each="goods : ${pageResult.list}">
+                                <th:block th:if="${category.categoryId == goods.goodsCategoryId}">
+                                    <div class="item_card_frame">
+                                        <div class="item_card"><a th:href="@{'/goods/detail/'+${goods.goodsId}}" target="_blank"><img
+                                                th:src="@{${goods.goodsCoverImg}}" th:alt="${goods.goodsName}"></a></div>
+                                        <div class="item_brand"><a th:href="@{'/goods/detail/'+${goods.goodsId}}" target="_blank"
+                                                                   th:text="${goods.goodsName}">newbee.ltd</a></div>
+                                        <div class="item_sub_intro" th:text="${goods.goodsIntro}">newbee.ltd</div>
+                                        <div class="item_price" th:text="${goods.sellingPrice+'.00元'}">1.00元</div>
+                                    </div>
+                                </th:block>
+                            </th:block>
+                        </div>
+                    </th:block>
+<!--                    <th:block th:each="goods : ${pageResult.list}">-->
+<!--                        <div class="item_card_frame">-->
+<!--                            <div class="item_card"><a th:href="@{'/goods/detail/'+${goods.goodsId}}" target="_blank"><img-->
+<!--                                    th:src="@{${goods.goodsCoverImg}}" th:alt="${goods.goodsName}"></a></div>-->
+<!--                            <div class="item_brand"><a th:href="@{'/goods/detail/'+${goods.goodsId}}" target="_blank"-->
+<!--                                                       th:text="${goods.goodsName}">newbee.ltd</a></div>-->
+<!--                            <div class="item_sub_intro" th:text="${goods.goodsIntro}">newbee.ltd</div>-->
+<!--                            <div class="item_price" th:text="${goods.sellingPrice+'.00元'}">1.00元</div>-->
+<!--                        </div>-->
+<!--                    </th:block>-->
                 </th:block>
             </th:block>
+<!--            <th:block th:unless="categories">-->
+<!--                <th:block th:each="category : ${categories}">-->
+
+<!--                </th:block>-->
+<!--            </th:block>-->
+
             <div class="clear"></div>
         </div>
-        <div class="pages">
-            <div class="page_wrap">
-                <th:block th:if="${null != pageResult and !#lists.isEmpty(pageResult.list)}">
-            <span class="page_span1">
-                 <a th:href="@{${pageResult.currPage==1}?'##':'/search?keyword='+${keyword==null?'':keyword}+'&page=' + ${pageResult.currPage-1}+'&goodsCategoryId='+${goodsCategoryId==null?'':goodsCategoryId}+'&orderBy='+${orderBy==null?'':orderBy}}">
-                                    < 上一页
-                                </a>
-                <th:block th:if="${pageResult.currPage-2 >=1}"><a
-                        th:href="@{'/search?keyword='+${keyword==null?'':keyword}+'&page=' + ${pageResult.currPage-2}+'&goodsCategoryId='+${goodsCategoryId==null?'':goodsCategoryId}+'&orderBy='+${orderBy==null?'':orderBy}}"
-                        th:text="${pageResult.currPage -2}">1</a></th:block>
-                <th:block th:if="${pageResult.currPage-1 >=1}"><a
-                        th:href="@{'/search?keyword='+${keyword==null?'':keyword}+'&page=' + ${pageResult.currPage-1}+'&goodsCategoryId='+${goodsCategoryId==null?'':goodsCategoryId}+'&orderBy='+${orderBy==null?'':orderBy}}"
-                        th:text="${pageResult.currPage -1}">1</a></th:block>
-                <a href="##" class="active" th:text="${pageResult.currPage}">1</a>
-                <th:block th:if="${pageResult.currPage+1<=pageResult.totalPage}"><a
-                        th:href="@{'/search?keyword='+${keyword==null?'':keyword}+'&page=' + ${pageResult.currPage+1}+'&goodsCategoryId='+${goodsCategoryId==null?'':goodsCategoryId}+'&orderBy='+${orderBy==null?'':orderBy}}"
-                        th:text="${pageResult.currPage +1}">1</a></th:block>
-                <th:block th:if="${pageResult.currPage+2<=pageResult.totalPage}"><a
-                        th:href="@{'/search?keyword='+${keyword==null?'':keyword}+'&page=' + ${pageResult.currPage+2}+'&goodsCategoryId='+${goodsCategoryId==null?'':goodsCategoryId}+'&orderBy='+${orderBy==null?'':orderBy}}"
-                        th:text="${pageResult.currPage +2}">1</a></th:block>
-                 <a th:href="@{${pageResult.currPage>=pageResult.totalPage}?'##':'/search?keyword='+${keyword==null?'':keyword}+'&page=' + ${pageResult.currPage+1}+'&goodsCategoryId='+${goodsCategoryId==null?'':goodsCategoryId}+'&orderBy='+${orderBy==null?'':orderBy}}">
-                                    下一页 >
-                                </a>
-					</span>
-                </th:block>
-            </div>
-        </div>
+<!--        <div class="pages">-->
+<!--            <div class="page_wrap">-->
+<!--                <th:block th:if="${null != pageResult and !#lists.isEmpty(pageResult.list)}">-->
+<!--            <span class="page_span1">-->
+<!--                 <a th:href="@{${pageResult.currPage==1}?'##':'/search?keyword='+${keyword==null?'':keyword}+'&page=' + ${pageResult.currPage-1}+'&goodsCategoryId='+${goodsCategoryId==null?'':goodsCategoryId}+'&orderBy='+${orderBy==null?'':orderBy}}">-->
+<!--                                    < 上一页-->
+<!--                                </a>-->
+<!--                <th:block th:if="${pageResult.currPage-2 >=1}"><a-->
+<!--                        th:href="@{'/search?keyword='+${keyword==null?'':keyword}+'&page=' + ${pageResult.currPage-2}+'&goodsCategoryId='+${goodsCategoryId==null?'':goodsCategoryId}+'&orderBy='+${orderBy==null?'':orderBy}}"-->
+<!--                        th:text="${pageResult.currPage -2}">1</a></th:block>-->
+<!--                <th:block th:if="${pageResult.currPage-1 >=1}"><a-->
+<!--                        th:href="@{'/search?keyword='+${keyword==null?'':keyword}+'&page=' + ${pageResult.currPage-1}+'&goodsCategoryId='+${goodsCategoryId==null?'':goodsCategoryId}+'&orderBy='+${orderBy==null?'':orderBy}}"-->
+<!--                        th:text="${pageResult.currPage -1}">1</a></th:block>-->
+<!--                <a href="##" class="active" th:text="${pageResult.currPage}">1</a>-->
+<!--                <th:block th:if="${pageResult.currPage+1<=pageResult.totalPage}"><a-->
+<!--                        th:href="@{'/search?keyword='+${keyword==null?'':keyword}+'&page=' + ${pageResult.currPage+1}+'&goodsCategoryId='+${goodsCategoryId==null?'':goodsCategoryId}+'&orderBy='+${orderBy==null?'':orderBy}}"-->
+<!--                        th:text="${pageResult.currPage +1}">1</a></th:block>-->
+<!--                <th:block th:if="${pageResult.currPage+2<=pageResult.totalPage}"><a-->
+<!--                        th:href="@{'/search?keyword='+${keyword==null?'':keyword}+'&page=' + ${pageResult.currPage+2}+'&goodsCategoryId='+${goodsCategoryId==null?'':goodsCategoryId}+'&orderBy='+${orderBy==null?'':orderBy}}"-->
+<!--                        th:text="${pageResult.currPage +2}">1</a></th:block>-->
+<!--                 <a th:href="@{${pageResult.currPage>=pageResult.totalPage}?'##':'/search?keyword='+${keyword==null?'':keyword}+'&page=' + ${pageResult.currPage+1}+'&goodsCategoryId='+${goodsCategoryId==null?'':goodsCategoryId}+'&orderBy='+${orderBy==null?'':orderBy}}">-->
+<!--                                    下一页 >-->
+<!--                                </a>-->
+<!--					</span>-->
+<!--                </th:block>-->
+<!--            </div>-->
+<!--        </div>-->
     </div>
 
 </content>

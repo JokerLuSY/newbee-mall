@@ -141,6 +141,16 @@
     flex-shrink: 0;
     position: relative;
 }
+.nav-title{
+    width: 1226px;
+    height: 80px;
+    flex-shrink: 0;
+    position: relative;
+    font-size: 40px;
+    line-height: 2;
+    background-color: #7ecff4;
+    text-align: center;
+}
 
 #nav .banner_x {
     width: 1226px;

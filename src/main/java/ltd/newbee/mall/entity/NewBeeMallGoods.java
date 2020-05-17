@@ -175,6 +175,7 @@ public class NewBeeMallGoods {
         sb.append("Hash = ").append(hashCode());
         sb.append(", goodsId=").append(goodsId);
         sb.append(", goodsName=").append(goodsName);
+        sb.append(", goodsCategoryId=").append(goodsCategoryId);
         sb.append(", goodsIntro=").append(goodsIntro);
         sb.append(", goodsCoverImg=").append(goodsCoverImg);
         sb.append(", goodsCarousel=").append(goodsCarousel);

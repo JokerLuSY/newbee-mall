@@ -13,6 +13,8 @@ public class NewBeeMallSearchGoodsVO implements Serializable {
 
     private String goodsIntro;
 
+    private Long goodsCategoryId;
+
     private String goodsCoverImg;
 
     private Integer sellingPrice;
@@ -23,6 +25,14 @@ public class NewBeeMallSearchGoodsVO implements Serializable {
 
     public void setGoodsId(Long goodsId) {
         this.goodsId = goodsId;
+    }
+
+    public Long getGoodsCategoryId() {
+        return goodsCategoryId;
+    }
+
+    public void setGoodsCategoryId(Long goodsCategoryId) {
+        this.goodsCategoryId = goodsCategoryId;
     }
 
     public String getGoodsName() {
