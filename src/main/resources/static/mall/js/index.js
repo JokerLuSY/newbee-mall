@@ -1,3 +1,11 @@
+$(function(){
+    $("#banner .item").click(function(){
+        var $objName = $(this).attr('name');
+        $.scrollTo($objName,800);
+    });
+});
+
+
 var newbeeSwiper = new Swiper('.swiper-container', {
     //设置自动播放
     autoplay: {

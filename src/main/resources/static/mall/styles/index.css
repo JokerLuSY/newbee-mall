@@ -3,7 +3,8 @@
     top: 50px;
     left: 0;
     float: left;
-    width: 150px;
+    width: 80px;
+    z-index: 999;
     border-top: none;
     background: white;
     height: 100%;

@@ -222,6 +222,11 @@ public class OrderController {
             // 付款金额
             String total_amount = new String(request.getParameter("total_amount").getBytes("ISO-8859-1"), "UTF-8");
             String finishOrderResult = newBeeMallOrderService.finishOrder(out_trade_no, userid);
+
+            request.setAttribute("outTradeNo", out_trade_no);
+            request.setAttribute("tradeNo", trade_no);
+            request.setAttribute("tradeAmount", total_amount);
+
             return "mall/paysuccess";
         }
         //String finishOrderResult = newBeeMallOrderService.finishOrder(orderNo, userid);
