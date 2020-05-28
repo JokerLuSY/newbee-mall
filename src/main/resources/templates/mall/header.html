@@ -16,71 +16,41 @@
     <meta name="description" content="newbee-mall 项目（新蜂商城）是一套电商系统，包括 newbee-mall 商城系统及 newbee-mall-admin 商城后台管理系统，基于 Spring Boot 2.X 及相关技术栈开发。前台商城系统包含首页门户、商品分类、新品上线、首页轮播、商品推荐、商品搜索、商品展示、购物车、订单结算、订单流程、个人订单管理、会员中心、帮助中心等模块。后台管理系统包含数据面板、轮播图管理、商品管理、订单管理、会员管理、分类管理、设置等模块。Spring Boot 大型线上商城项目实战教程"/>
 </head>
 <nav id="nav" th:fragment="nav-fragment">
-    <div class="banner_x center">
-        <a th:href="@{/index}" class="logo navbar-brand"><h1>影视会员商城</h1></a>
-
-        <div class="fr">
-            <div class="search">
-                <input class="text" type="text" id="keyword" autocomplete="off">
-                <div class="search_hot">
-                </div>
-            </div>
-            <div class="button iconfont icon-search" onclick="search()"></div>
-        </div>
-    </div>
+<!--    <div class="banner_x center">-->
+<!--        <div class="fr">-->
+<!--            <div class="button iconfont icon-search" onclick="search()"></div>-->
+<!--        </div>-->
+<!--    </div>-->
 </nav>
 <header id="header" th:fragment="header-fragment">
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark ">
-        <div class="center margin-right0">
-            <div class="fr navbar-collapse collapse">
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-crimson">
+        <a th:href="@{/index}"><h3 class="color-white">影视会员商城</h3></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="fr navbar-collapse collapse" id="navbarCollapse">
                 <th:block th:unless="${session.newBeeMallUser==null}">
                     <div class="dropdown user">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <th:block th:text="${session.newBeeMallUser.nickName}"></th:block>
                         </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" th:href="@{/personal}">个人中心</a>
-                            <a class="dropdown-item" th:href="@{/orders}">我的订单</a>
-                            <a class="dropdown-item" th:href="@{/logout}">退出登录</a>
-                        </div>
+                        <ul class="login navbar-nav mr-auto" style="float: right;">
+                            <li class="nav-item nav-link"><input class="text form-control" type="text" id="keyword" placeholder="查询" aria-label="Search" autocomplete="off"></li>
+                            <li class="nav-item nav-link"><a style="color: white;" th:href="@{/personal}">个人中心</a></li>
+                            <li class="nav-item nav-link"><a style="color: white;" th:href="@{/orders}">我的订单</a></li>
+                            <li class="nav-item nav-link"><a style="color: white;" th:href="@{/logout}">退出登录</a></li>
+                        </ul>
                     </div>
-<!--                    <div class="user">-->
-<!--                        <ul class="selector navbar-nav mr-auto">-->
-<!--                            <li class="nav-item nav-link">-->
-<!--                                <a th:href="@{/personal}">-->
-<!--                                    个人中心-->
-<!--                                </a>-->
-<!--                            </li>-->
-<!--                            <li class="nav-item nav-link">-->
-<!--                                <a th:href="@{/orders}">-->
-<!--                                    我的订单-->
-<!--                                </a>-->
-<!--                            </li>-->
-<!--                            <li class="nav-item nav-link">-->
-<!--                                <a th:href="@{/logout}">-->
-<!--                                    退出登录-->
-<!--                                </a>-->
-<!--                            </li>-->
-<!--                        </ul>-->
-<!--                        <a href="##" class="nav-link username">-->
-<!--                            <th:block th:text="${session.newBeeMallUser.nickName}"></th:block>-->
-<!--                            <i class="iconfont icon-down"></i>-->
-<!--                        </a>-->
-<!--                    </div>-->
-<!--                    <div class="shopcart">-->
-<!--                        <a th:href="@{/shop-cart}" style="color: white;"><i class="iconfont icon-cart"></i>-->
-<!--                            购物车(-->
-<!--                            <th:block th:text="${session.newBeeMallUser.shopCartItemCount}"></th:block>-->
-<!--                            )</a>-->
-<!--                    </div>-->
                 </th:block>
                 <th:block th:if="${session.newBeeMallUser==null}">
                     <ul class="login navbar-nav mr-auto" style="float: right;">
+                        <li class="nav-item nav-link"><input class="text form-control" type="text" id="keyword" placeholder="查询" aria-label="Search" autocomplete="off"></li>
                         <li class="nav-item nav-link"><a style="color: white;" th:href="@{/login}">登录</a></li>
                         <li class="nav-item nav-link"><a style="color: white;" th:href="@{/register}">注册</a></li>
                         <li class="nav-item nav-link">
                             <div class="shopcart">
-                                <a href="##" style="color: white;back"><i class="iconfont icon-cart"></i>
+                                <a href="##" style="color: white;"><i class="iconfont icon-cart"></i>
                                 购物车(0)
                                 </a>
                             </div>
@@ -88,9 +58,8 @@
                     </ul>
 
                 </th:block>
-            </div>
         </div>
-    </nav>
+</nav>
 
 </header>
 </html>

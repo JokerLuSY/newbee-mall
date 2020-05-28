@@ -4,5 +4,15 @@
 
 .shopcart{
     color: white;
-    background-color: #1bd1d1;
+    /*background-color: #1bd1d1;*/
 }
+
+.bg-crimson{
+    background-color: crimson;
+}
+
+.color-white{
+    color: white;
+}
+
+a:link {color: blue; text-decoration:none;}

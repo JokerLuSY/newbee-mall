@@ -7,7 +7,7 @@
 }
 @media screen and (max-width: 1225px) {
   body {
-    width: 1226px;
+    /*width: 1226px;*/
   }
 }
 img {
@@ -25,7 +25,7 @@ a {
   margin: 0 auto;
 }
 .w {
-  width: 1226px;
+  /*width: 1226px;*/
   margin: 0 auto;
 }
 .fl {
