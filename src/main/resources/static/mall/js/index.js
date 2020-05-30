@@ -1,5 +1,5 @@
 $(function(){
-    $("#banner .item").click(function(){
+    $(".sidebar-sticky .nav-item").click(function(){
         var $objName = $(this).attr('name');
         $.scrollTo($objName,800);
     });

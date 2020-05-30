@@ -79,3 +79,10 @@ a {
   font-size: 22px;
   font-weight: bold;
 }
+
+.padding-0{
+  padding: 0;
+}
+.margin-right30p{
+  margin-right: 30%;
+}
