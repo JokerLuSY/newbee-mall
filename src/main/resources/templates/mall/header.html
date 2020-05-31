@@ -33,9 +33,9 @@
         <div class="fr navbar-collapse collapse" id="navbarCollapse">
                 <th:block th:unless="${session.newBeeMallUser==null}">
                     <div class="dropdown user">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <th:block th:text="${session.newBeeMallUser.nickName}"></th:block>
-                        </button>
+<!--                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                            <th:block th:text="${session.newBeeMallUser.nickName}"></th:block>-->
+<!--                        </button>-->
                         <ul class="login navbar-nav mr-auto" style="float: right;">
                             <li class="nav-item nav-link"><input class="text form-control" type="text" id="keyword" placeholder="查询" aria-label="Search" autocomplete="off"></li>
                             <li class="nav-item nav-link"><a style="color: white;" th:href="@{/personal}">个人中心</a></li>

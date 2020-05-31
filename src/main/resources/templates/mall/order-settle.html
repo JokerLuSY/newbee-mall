@@ -13,9 +13,9 @@
     <div class="self-info center">
 
         <!-- sidebar -->
-        <div th:replace="mall/personal-sidebar::sidebar-fragment"></div>
+<!--        <div th:replace="mall/personal-sidebar::sidebar-fragment"></div>-->
 
-        <div class="intro fr">
+        <div class="intro center">
             <div class="uc-box uc-main-box">
                 <div class="uc-content-box order-view-box">
                     <div class="box-hd">
@@ -29,39 +29,12 @@
                     <div class="box-bd">
                         <div class="uc-order-item uc-order-item-pay">
                             <div class="order-detail">
-
-                                <div class="order-summary">
-                                    <div class="order-progress">
-                                        <ol class="progress-list clearfix progress-list-5">
-                                            <li class="step step-done">
-                                                <div class="progress"><span class="text">购物车</span></div>
-                                                <div class="info"></div>
-                                            </li>
-                                            <li class="step step-active">
-                                                <div class="progress"><span class="text">下单</span></div>
-                                                <div class="info"></div>
-                                            </li>
-                                            <li class="step">
-                                                <div class="progress"><span class="text">付款</span></div>
-                                                <div class="info"></div>
-                                            </li>
-                                            <li class="step">
-                                                <div class="progress"><span class="text">出库</span></div>
-                                                <div class="info"></div>
-                                            </li>
-                                            <li class="step">
-                                                <div class="progress"><span class="text">交易成功</span></div>
-                                                <div class="info"></div>
-                                            </li>
-                                        </ol>
-                                    </div>
-                                </div>
                                 <table class="order-items-table">
                                     <tbody>
 
                                     <th:block th:each="item : ${myShoppingCartItems}">
                                         <tr>
-                                            <td class="col col-thumb">
+                                            <td class="col" style="width:33.33%">
                                                 <div class="figure figure-thumb">
                                                     <a target="_blank" th:href="@{'/goods/detail/'+${item.goodsId}}">
                                                         <img th:src="@{${item.goodsCoverImg}}"
@@ -69,13 +42,13 @@
                                                     </a>
                                                 </div>
                                             </td>
-                                            <td class="col col-name">
+                                            <td class="col col-name" style="width:40%">
                                                 <p class="name">
                                                     <a target="_blank" th:href="@{'/goods/detail/'+${item.goodsId}}"
                                                        th:text="${item.goodsName}">newbee</a>
                                                 </p>
                                             </td>
-                                            <td class="col col-price"><p class="price"
+                                            <td class="col col-price" colspan="2"><p class="price"
                                                                          th:text="${item.sellingPrice+'元 x '+item.goodsCount}">
                                                 1299元 × 1</p></td>
                                             <td class="col col-actions">

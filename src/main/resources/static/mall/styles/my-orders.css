@@ -7,7 +7,7 @@
 }
 
 #personal .self-info {
-    width: 1226px;
+    /*width: 1226px;*/
 }
 
 #personal .self-info .lfnav {
@@ -47,8 +47,8 @@
 }
 
 #personal .self-info .intro {
-    width: 978px;
-    margin-left: 10%;
+    /*width: 978px;*/
+    /*margin-left: 10%;*/
     background: #fff;
 }
 

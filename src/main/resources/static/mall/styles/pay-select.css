@@ -3,7 +3,7 @@
     background: #f5f5f5;
 }
 .container {
-    width: 1226px;
+    /*width: 1226px;*/
     *zoom: 1;
     margin-right: auto;
     margin-left: auto;
@@ -195,7 +195,7 @@ dl, menu, ol, ul {
 
 .payment-list li {
     float: left;
-    width: 174px;
+    /*width: 174px;*/
     height: 60px;
     line-height: 60px;
     margin-left: 14px;
